@@ -22,7 +22,15 @@ iframe {
 <iframe id='framey' frameborder = 0></iframe>
 </body>
 <script>
-var url = "https://script.google.com/macros/s/AKfycbwPLyHPD9ADUSoU-zPO_l3vLlK4qFPnofZ-fUMdsxgi65SRgdl5/exec";
-document.getElementById("framey").src = url;
+var url = window.location.href;
+query = url.replace("https://statsapps.online/","");
+var parts = query.split("/");
+if(parts[0] == "draw" && parts.length == 4)
+{
+   var url = "https://script.google.com/macros/s/AKfycbwPLyHPD9ADUSoU-zPO_l3vLlK4qFPnofZ-fUMdsxgi65SRgdl5/exec";
+   url = url + "?code=" + encodeURI(parts[1]) + "&page=" + parts[2];
+   document.getElementById("framey").src = url;
+}
+
 </script>
 </html>
